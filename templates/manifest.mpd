@@ -1,0 +1,24 @@
+<MPD xmlns="urn:mpeg:dash:schema:mpd:2011" minBufferTime="PT1.500000S" type="dynamic" profiles="urn:mpeg:dash:profile:isoff-live:2011,http://dashif.org/guidelines/dash264" minimumUpdatePeriod="PT5.000000S" availabilityStartTime="1970-01-01T00:00:00Z" timeShiftBufferDepth="PT60.000000S" suggestedPresentationDelay="PT15.000000S">
+  <BaseURL>https://dash.akamaized.net/dash264/TestCases/1c/qualcomm/2/</BaseURL>
+  <Period id="" start="{{ start }}">
+    <AdaptationSet segmentAlignment="true" maxWidth="1280" maxHeight="720" maxFrameRate="24" par="16:9">
+      <Representation id="1" mimeType="video/mp4" codecs="avc1.42c01f" width="1280" height="720" frameRate="24" sar="1:1" startWithSAP="1" bandwidth="1426587">
+        <SegmentTemplate timescale="12288" media="BBB_720_1M_video_$Time$.mp4" initialization="BBB_720_1M_video_init.mp4" presentationTimeOffset="61440">
+          <SegmentTimeline>
+            <S d="61440" t="61440" r="12" />
+          </SegmentTimeline>
+        </SegmentTemplate>
+      </Representation>
+    </AdaptationSet>
+    <AdaptationSet segmentAlignment="true">
+      <Representation id="4" mimeType="audio/mp4" codecs="mp4a.40.29" audioSamplingRate="48000" startWithSAP="1" bandwidth="33028">
+        <AudioChannelConfiguration schemeIdUri="urn:mpeg:dash:23003:3:audio_channel_configuration:2011" value="2" />
+        <SegmentTemplate timescale="48000" media="BBB_32k_$Time$.mp4" initialization="BBB_32k_init.mp4" presentationTimeOffset="{{ audio_pto }}">
+          <SegmentTimeline>
+            <S d="239616" t="239616" r="12" />
+          </SegmentTimeline>
+        </SegmentTemplate>
+      </Representation>
+    </AdaptationSet>
+  </Period>
+</MPD>
